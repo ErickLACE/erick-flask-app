@@ -1,0 +1,38 @@
+
+{% extends 'layout.html' %}
+
+{% block title %}
+    Artículos
+{% endblock title %}
+    
+
+{% block body %}
+    
+    <h1>Artículos</h1>
+
+    <form action="/create-articles" method="POST">
+        <label>Título:</label><br>
+        <input type="text" name="title" id="title" placeholder='Título'>
+        <br>
+        <label>Cuerpo:</label><br>
+        <input type="textarea" name="body" id="body" placeholder='Cuerpo'>
+        <br>
+        <button type='submit'>Envíar</button>
+    </form>
+
+    
+    {% for article in article %}
+        <ul>
+            <li>ID: {{article.id}}</li>
+            <li>Título: {{article.title}}</li>
+            <li>Cuerpo: {{article.body}}</li>
+            <li>
+                <a href="/delete-articles/{{article.id}}" >Eliminar</a>
+            </li>
+        </ul>
+
+    {% endfor %}
+        
+
+{% endblock body %}
+    
